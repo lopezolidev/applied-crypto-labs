@@ -56,6 +56,34 @@ def rsa_proc(p, q):
     return (e, n)
 
 
-public_key = rsa_proc(3, 11)
+def decode(pub_key):
+    e, n = pub_key
 
-print(f"public key, given 3 and 11 is: {public_key}")
+    p = n // e # obtaining one of the components
+
+    phi = (p -1) * (e - 1)
+
+    d_prev = 0
+    d_curr = 1
+
+    while True:
+        q = phi // e # division
+        r = phi - q * e # residue
+        d_new = d_prev - q * d_curr # accountancy of how many times 'e' appears
+        if r == 1:
+            if d_new < 0:
+                d_new = d_new + phi
+                return d_new
+            return d_new
+        phi = e
+        e = r
+        d_prev = d_curr
+        d_curr = d_new
+
+public_key = rsa_proc(7, 11)
+
+print(f"public key, given 7 and 11 is: {public_key}")
+
+private_key = decode(public_key)
+
+print(f"private key, given 7 and 11 is: {private_key}")
