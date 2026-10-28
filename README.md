@@ -69,7 +69,7 @@ Para blindar la matemática de RSA, la industria impone una capa previa conocida
 * **Manejo de Excepciones Seguras:** Al fallar la verificación de integridad durante el descifrado, la librería lanza un error genérico (`ValueError`). Esto no es casualidad; es una práctica de seguridad (mitigación de *Padding Oracle Attacks*) para no darle pistas al atacante sobre qué parte exacta de la estructura interna falló.
 * **Separación de Responsabilidades:** Se hace evidente que RSA no fue diseñado para cifrar bases de datos ni archivos grandes debido a la pesada carga de procesamiento (exponenciación de números de cientos de dígitos) y al límite de tamaño de bloque.
 
-## 🚀 Requisitos y Ejecución
+## 🚀 Ejecución
 
 * **Ejecución:** `python3 src/labs/lab1_rsa_oaep.py`
 
@@ -107,7 +107,7 @@ Se delega el trabajo pesado (cifrar el archivo) a la herramienta rápida (AES), 
 * **RSA-OAEP (Optimal Asymmetric Encryption Padding):** Mantiene la seguridad de la fase asimétrica. Al cifrar la pequeña clave de sesión de 32 bytes con RSA, se aplica el relleno OAEP para evitar el determinismo y blindar el intercambio de la clave contra ataques homomórficos.
 * **Cero Reutilización (Nonce):** AES-GCM genera un Vector de Inicialización (Nonce) único para cada operación de cifrado, asegurando que cifrar el mismo documento dos veces genere criptogramas radicalmente diferentes.
 
-## 🚀 Requisitos y Ejecución
+## 🚀 Ejecución
 
 * **Ejecución:** `python src/labs/lab2_cifrado_hibrido.py`
 
@@ -142,7 +142,7 @@ En su lugar, el proceso es:
 * **SHA-256 (Secure Hash Algorithm 256-bit):** Provee una garantía matemática contra *colisiones* (la imposibilidad práctica de crear un documento falsificado que por casualidad genere el mismo Hash que el documento original).
 * **La Independencia del Secreto:** En este laboratorio, el documento en sí mismo no viaja cifrado (viaja en texto plano). El objetivo aquí no es ocultarlo, sino blindar legal y matemáticamente su origen.
 
-## 🚀 Requisitos y Ejecución
+## 🚀 Ejecución
 
 * **Ejecución:** `python src/labs/lab3_firmas_digitales.py`
 
