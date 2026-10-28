@@ -65,7 +65,7 @@ Para blindar la matemática de RSA, la industria impone una capa previa conocida
 
 ## 🛠️ Aspectos Técnicos Relevantes en la Implementación
 
-* **Generación de Llaves de 2048 bits:** El laboratorio automatiza la búsqueda de primos criptográficos ($p$ y $q$) y el cálculo de la función totiente ($\phi(n)$) para generar módulos $n$ de 2048 bits, impenetrables mediante fuerza bruta o factorización con la tecnología clásica actual.
+* **Generación de Llaves de 2048 bits:** El laboratorio automatiza la búsqueda de primos criptográficos ($p$ y $q$) y el cálculo de la función totiente ( $\phi(n)$ ) para generar módulos $n$ de 2048 bits, impenetrables mediante fuerza bruta o factorización con la tecnología clásica actual.
 * **Manejo de Excepciones Seguras:** Al fallar la verificación de integridad durante el descifrado, la librería lanza un error genérico (`ValueError`). Esto no es casualidad; es una práctica de seguridad (mitigación de *Padding Oracle Attacks*) para no darle pistas al atacante sobre qué parte exacta de la estructura interna falló.
 * **Separación de Responsabilidades:** Se hace evidente que RSA no fue diseñado para cifrar bases de datos ni archivos grandes debido a la pesada carga de procesamiento (exponenciación de números de cientos de dígitos) y al límite de tamaño de bloque.
 
