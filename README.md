@@ -30,7 +30,7 @@ Debemos iniciar con un entorno virtual en python para descargar los modulos de f
 python3 -m venv crypto_env
 ```
 
-###### 2. Activar el entorno virtual (notarás que tu prompt cambia)
+###### 2. Activar el entorno virtual
 ```python
 source crypto_env/bin/activate
 ```
@@ -43,11 +43,6 @@ pip3 uninstall crypto pycrypto -y
 ###### 4. Instalar la librería criptográfica oficial y moderna
 ```python
 pip3 install pycryptodome
-```
-
-###### 5. Ejecutar tu script (con el entorno activado)
-```python
-python3 src/labs/lab2_cifrado_hibrido.py
 ```
 
 ---
@@ -76,8 +71,7 @@ Para blindar la matemática de RSA, la industria impone una capa previa conocida
 
 ## 🚀 Requisitos y Ejecución
 
-* **Dependencias:** `pip install pycryptodome`
-* **Ejecución:** `python lab1_rsa_oaep.py`
+* **Ejecución:** `python3 src/labs/lab1_rsa_oaep.py`
 
 El script ejecuta un flujo *end-to-end* emulando la generación de llaves, el cifrado de un mensaje en texto plano mediante OAEP y el descifrado seguro, finalizando con una prueba empírica que demuestra la destrucción del determinismo.
 
@@ -115,8 +109,7 @@ Se delega el trabajo pesado (cifrar el archivo) a la herramienta rápida (AES), 
 
 ## 🚀 Requisitos y Ejecución
 
-* **Dependencias:** `pip install pycryptodome`
-* **Ejecución:** `python lab2_cifrado_hibrido.py`
+* **Ejecución:** `python src/labs/lab2_cifrado_hibrido.py`
 
 El script ejecuta un flujo *end-to-end* que emula la preparación del Sobre Digital, su transmisión teórica, y la apertura estructurada en destino validando Confidencialidad e Integridad.
 
@@ -151,8 +144,20 @@ En su lugar, el proceso es:
 
 ## 🚀 Requisitos y Ejecución
 
-* **Dependencias:** `pip install pycryptodome`
-* **Ejecución:** `python lab3_firmas_digitales.py`
+* **Ejecución:** `python src/labs/lab3_firmas_digitales.py`
 
 El script recrea un flujo de emisión y recepción evaluando dos escenarios: un documento íntegro que pasa la validación asimétrica, y la intercepción de un atacante que altera el contenido demostrando cómo el motor criptográfico destruye la confianza y lanza un error.
 
+---
+
+## 🎓 Conclusión y Resultados del Aprendizaje
+
+El desarrollo y análisis de estos laboratorios consolida una lección crítica en la ingeniería de ciberseguridad: **los algoritmos matemáticos no garantizan seguridad por sí solos si se implementan en el vacío.**
+
+A través de este viaje, hemos extraído los siguientes aprendizajes fundamentales:
+
+1. **La matemática pura no es ingeniería segura:** Entendimos que algoritmos perfectos en el papel, como el RSA clásico ($C = M^e \pmod n$), fallan estrepitosamente en producción debido a propiedades algebraicas como el homomorfismo. Aprendimos que la inyección de aleatoriedad y verificación estructural (esquemas de relleno como OAEP y PSS) son la verdadera armadura del sistema.
+2. **Ningún algoritmo es la bala de plata:** RSA es excelente para intercambiar secretos e identidades, pero es inviable para cifrar bases de datos o archivos pesados. AES es infinitamente rápido y capaz, pero inútil si no podemos compartir su contraseña de forma segura. La seguridad moderna nace de la **orquestación** (Criptografía Híbrida), usando lo mejor de cada mundo para cubrir las debilidades del otro.
+3. **Cifrar no es autenticar:** Comprendimos empíricamente que enviar un mensaje cifrado no prueba quién lo envió ni evita que sea saboteado. El cifrado autenticado (AES-GCM) y las Firmas Digitales con *Hashing* (SHA-256) son componentes no negociables en cualquier arquitectura moderna.
+
+Este repositorio sirve como plantilla y prueba de concepto (PoC) de que los protocolos complejos que protegen la internet moderna (como TLS/HTTPS) operan bajo estos exactos mismos principios de orquestación criptográfica.
