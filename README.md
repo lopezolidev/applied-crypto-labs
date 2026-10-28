@@ -3,6 +3,23 @@ Laboratorios prácticos de criptografía: implementación segura de RSA con PyCr
 
 ---
 
+# 🛡️ Criptografía Aplicada: De la Teoría Matemática a la Producción
+
+## 📌 Introducción al Repositorio
+
+Bienvenido a este repositorio de **Laboratorios de Criptografía Aplicada**. El propósito de este material es desmitificar la caja negra de los algoritmos criptográficos y demostrar, a través de código en Python altamente documentado, cómo se realiza la transición desde la matemática teórica ("Libro de Texto") hacia implementaciones de grado industrial utilizadas en la ciberseguridad moderna.
+
+La criptografía en el mundo real no se trata únicamente de ocultar información; se trata de orquestar algoritmos para garantizar que los datos viajen seguros (**Confidencialidad**), no sean alterados en el camino (**Integridad**), provengan de quien dicen provenir (**Autenticación**) y que el emisor no pueda negar su autoría (**No Repudio**).
+
+Este repositorio está estructurado en una progresión lógica de tres laboratorios fundamentales utilizando la librería estándar `PyCryptodome`:
+
+* **🧪 Laboratorio 1 - RSA Industrial (RSA-OAEP):** Demuestra por qué el RSA matemático puro es vulnerable (determinismo y maleabilidad) y cómo el estándar de relleno OAEP mitiga estos ataques.
+* **🧪 Laboratorio 2 - El Sobre Digital (Criptografía Híbrida):** Resuelve los severos límites de tamaño y velocidad computacional de RSA fusionándolo con el cifrado simétrico (AES-GCM), permitiendo transmitir volúmenes masivos de datos de forma segura.
+* **🧪 Laboratorio 3 - Firmas Digitales (RSA-PSS):** Implementa el mecanismo asimétrico inverso junto con funciones de *Hash* (SHA-256) para garantizar la identidad del emisor y la inmutabilidad de los documentos legales o técnicos.
+
+
+---
+
 
 # Entorno
  
