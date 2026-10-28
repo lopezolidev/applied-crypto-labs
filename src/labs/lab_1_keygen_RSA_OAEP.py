@@ -1,9 +1,30 @@
+# =====================================================================
+# IMPORTACIONES DE GRADO CRIPTOGRÁFICO (PyCryptodome) - LAB 1
+# =====================================================================
+
+# 1. Importamos el estándar RSA.
+# Proporciona la matemática fundamental para generar y gestionar el par 
+# de llaves asimétricas (pública y privada). En producción, esto reemplaza 
+# nuestros cálculos manuales por algoritmos ultra-optimizados que buscan 
+# números primos gigantescos para crear llaves seguras (ej. 2048 bits).
 from Crypto.PublicKey import RSA
+
+# 2. Importamos el esquema de relleno OAEP (Optimal Asymmetric Encryption Padding).
+# Es el "envoltorio inteligente" indispensable para que RSA sea seguro. 
+# Inyecta una semilla aleatoria en cada cifrado para destruir el determinismo 
+# y aplica un enredo matemático (Red de Feistel) que bloquea la maleabilidad, 
+# impidiendo que un atacante modifique el criptograma en tránsito.
 from Crypto.Cipher import PKCS1_OAEP
+
+# 3. Importamos la función de resumen SHA-256.
+# En este laboratorio, OAEP la utiliza internamente como su Función Generadora 
+# de Máscaras (MGF). Su trabajo es expandir la semilla aleatoria para mezclarla 
+# con el mensaje usando operaciones de bit (XOR), creando el bloque de datos
+# final que será elevado matemáticamente por RSA.
 from Crypto.Hash import SHA256
 
 # ==========================================
-# PHASE 1: SAFE KEY GENERATION
+# FASE 1: GENERACION DE LLAVES SEGURAS
 # ==========================================
 print("--- 1. GENERACIÓN DE LLAVES DE GRADO INDUSTRIAL ---")
 
